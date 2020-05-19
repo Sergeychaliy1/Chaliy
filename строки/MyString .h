@@ -1,0 +1,10 @@
+unsigned int strLen(const char *str);
+void strCpy(char *dest, const char *source);
+int strnCpy(char *dest, const char *source, unsigned int len);
+void strCat(char *dest, const char *source);
+void strnCat(char *dest, const char *source, unsigned int len);
+void strReverse(char *str);
+void strToUpper(char *str);
+void strToLower(char *str);
+int strStr(const char *substr,const char *str);
+int strCmp(const char *str1,const char *str2);

@@ -1,8 +1,7 @@
-#include "MyString.h"
 #include <iostream>
-using namespace std;
+#include "MyString.h"
 
-int const shift;
+int const LetterACSIIDifferece = 32;
 
 unsigned int strLen(const char *str)
 {
@@ -13,133 +12,109 @@ unsigned int strLen(const char *str)
 
 void strCpy(char *dest, const char *source)
 {
-	for (int i=0; i<strLen(source)+1; i++)
+	for (int i=0; i<strLen(source); i++)
 	{
 		dest[i]=source[i];
 	}
 }
 
-int strnCpy(char *dest, const char *source, unsigned int len)
-{
-	int i=0;
-	for (; i<len; i++)
-	{
-		dest[i] = source[i];
-		if(source[i] == '\0')
-		{
-			break;
-		}
-	}
-	if (len <= i) return 0;
-	return (len - i );
-}
-
-
 void strCat(char *dest, const char *source)
 {   
 
-	for(int i=0,d=strLen(dest);i <= strLen(source)+1 ;d++,i++)
+	for(int i=0,d=strLen(dest);i <= strLen(source);i++)
 	{
-		dest[d]=source[i];
-	    
+		dest[j]=source[i];    
 	}
 }
-
-void strnCat(char *dest, const char *source, unsigned int len)
-{
-	int i,j;
-	i=strLen(dest);
-	j=0;
-	for(j;j<len;j++)
-	{
-		dest[i]=source[j];
-		i++;
-	}
-}
-
 void strReverse(char *str)
 {
-	char a;
-	int b=strLen(str);
-	for(int i=0 ;i<b/2 ;i++)
+char temp;
+	int strLenght = strLen(str);
+
+	for (int i = 0; i < strLenght / 2; i++)
 	{
-	a=str[i];
-	str[i]=str[b-i-1];
-	str[b-i-1]=a;
+		temp = str[i];
+		str[i] = str[strLenght - i - 1];
+		str[strLenght - i - 1] = temp;
 	}
 }
 
 void strToUpper(char *str)
 {
-	char a;
-	int b=strLen(str);
-	for(int i=0;i<b;i++)
+	char temp;
+int strLenght = strLen(str);
+	for(int i=0;i<strLenght;i++)
 	{
-	  if ('a'<=str[i] && str[i]<='z')
+	  if (str[i] >= 'a'&& str[i]<='z')
 	  {
-		str[i]-= shift;
+		str[i]-= LetterACSIIDifferece;
 	  }
 	}
 }
 void strToLower(char *str)
 {
-	char a;
-	int b=strLen(str);
-	for(int i=0;i<b;i++)
+	char temp;
+	int strLenght=strLen(str);
+	for(int i=0;i < strLenght;i++)
 	{
-	if ('A'<=str[i] && str[i]<='Z')
-	{
-		str[i]+=shift ;
-	}
+if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			str[i] += LetterACSIIDifferece;
+		}
 	}
 
 }
 
 
-int strStr(const char *str,const char *substr)
+int strStr(const char *str,const char *subStr)
 {
-	int a=strLen(substr), b=strLen(str);
-	int c=-1;
-	int j=0;
+int subStrPosBegin = 0;
+	int strLenght = strLen(str);
+	int subStrLenght = strLen(subStr);
 	for(int i=0;i<=(b-a);i++)
 	{
-		 for(j; j<a,substr[j]==str[j+i]; j++)
-		 if (j==(a-1))
-		 {
-			 c=i;
-			 i=b-a;
-		 }
-		 j=0;
+for (int i = 0; i < strLenght - subStrLenght; i++)
+{
+		for (int j = 0; j < subStrLenght && subStr[j] == str[j + 1]; j++)
+		{
+			if (j == strLenght - 1)
+			{
+				subStrPosBegin = i;
+				i = strLenght - subStrLenght;
+			}
+			j = 0;
+		}
 	}
-	
-	return c;
+	return subStrPosBegin;
 }
 
 
 int strCmp(const char *str1,const char *str2)
 {
-	int c=0;
-	int i=0;
 if(strLen(str1)==strLen(str2))
 {
-	while(i<strLen(str1) && str1[i]==str2[i])
-	{
-		i++;
-	}
+	for (int i = 0; i < strLen(str1) && str1[i] == str2[i]; i++)
+        {
 	if (str1[i]>str2[i])
 	{
-		c=1;
+return 1;
 	}
-	if (str1[i]<str2[i])
-	{
-		c=-1;
-	}
-}
+else if (str1[i] < str2[i])
+			{
+				return -1;
+			}
+
+		else
+			
 if(strLen(str1)>strLen(str2))
+{
 	return 1;
+}
 else if(strLen(str1)<strLen(str2))
+{
 	return -1;
-else  
-	return c;
+}
+	}
+	return 0;
 }
 

@@ -1,4 +1,3 @@
-﻿#include "stdafx.h"
 #include <iostream>
 #include <Windows.h>
 #include <string>
@@ -6,31 +5,12 @@
 
 using namespace std;
 
-enum Buttons
+enum Button
 {
 	ARROW_DOWN = 72,
 	ARROW_UP = 80,
 	ENTER = 13
 };
-
-void CursoreCord(int x, int y)
-{
-	HANDLE hCon;
-	COORD cPos;
-
-	hCon = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	cPos.Y = y;
-	cPos.X = x;
-	SetConsoleCursorPosition(hCon, cPos);
-}
-
-void SetColor(int text, int background)
-{
-	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hStdOut, (WORD)((background << 4) | text));
-
-}
 
 int Key(int cursore, bool& menu)
 {
@@ -75,6 +55,12 @@ int Key(int cursore, bool& menu)
 
 int main()
 {
+	HANDLE hCon;
+	COORD cPos;
+
+	hCon = GetStdHandle(STD_OUTPUT_HANDLE);
+	cPos.X = 37;
+	
 	bool menu = true;
 	setlocale(LC_ALL, "Rus");
 	int cursore = 0;
@@ -109,18 +95,19 @@ int main()
 	array[23] = "Пункт 4.4";
 	array[24] = "Обратно к 4";
 
-	SetColor(15, 0);
+	SetConsoleTextAttribute(hCon, (WORD)((0 << 4) | 15));
 
 	while (menu)
 	{
 		for (int i = cursore - cursore % 5; i < cursore - cursore % 5 + 5; i++)
 		{
-			CursoreCord(37, 10 + i - cursore + cursore % 5);
+			cPos.Y = 10 + i - cursore + cursore % 5;
+			SetConsoleCursorPosition(hCon, cPos);
 			if (i == cursore)
 			{
-				SetColor(7, 0);
+				SetConsoleTextAttribute(hCon, (WORD)((0 << 4) | 7));
 				cout << array[i];
-				SetColor(15, 0);
+				SetConsoleTextAttribute(hCon, (WORD)((0 << 4) | 15));
 			}
 			else
 				cout << array[i];

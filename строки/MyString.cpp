@@ -117,4 +117,16 @@ else if(strLen(str1)<strLen(str2))
 	}
 	return 0;
 }
-
+char* deleteTheLetter(char* text, char letter)
+{
+	for (int i = 0; text[i] != '\0'; i++)
+	{
+		if (text[i] == letter)
+		{
+			for (int j = i; text[j] != '\0'; j++)
+				text[j] = text[j + 1];
+			i--;
+		}
+	}
+	return text;
+}

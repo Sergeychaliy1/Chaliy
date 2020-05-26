@@ -39,7 +39,14 @@ cout << str1 << endl;
 	cout << strLower << endl;
 	cout << strUpper << endl;
 
-	
+
+        //#4
+
+
+	char someText[30];
+	std::cin.getline(someText, 30);
+	cout << deleteTheLetter(someText, 'o');
+
 	system("pause");
 	return 0;
   }

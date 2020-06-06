@@ -130,3 +130,33 @@ char* deleteTheLetter(char* text, char letter)
 	}
 	return text;
 }
+	char* strToLowerDyn(const char* str)
+{
+	char a;
+	int b = strLen(str);
+	char* newstr = new char[b];
+	for (int i = 0; i < b; i++)
+	{
+		newstr[i] = str[i];
+	}
+	for (int i = 0; i < b; i++)
+	{
+		if ('A' <= newstr[i] && newstr[i] <= 'Z')
+		{
+			newstr[i] = newstr[i]+ shift;
+		}
+		
+	}
+	delete[] str ;
+	return newstr;
+}
+
+
+StrReverseDyn(const char* str)
+{
+	char* newstr = new char[strlen(str)];
+	for (int i = 0; i < strlen(str); i++)
+		newstr[i] = str[strlen(str) - i];
+	delete[] str[strlen - i + 1];
+	return newstr;
+}

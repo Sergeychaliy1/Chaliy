@@ -156,7 +156,7 @@ StrReverseDyn(const char* str)
 {
 	char* newstr = new char[strlen(str)];
 	for (int i = 0; i < strlen(str); i++)
-		newstr[i] = str[strlen(str) - i];
-	delete[] str[strlen - i + 1];
+		newstr[i] = str[strlen-i-1];
+	delete[] str;
 	return newstr;
 }

@@ -50,4 +50,12 @@ cout << str1 << endl;
 	system("pause");
 	return 0;
   }
+
+	char mas[] = "sdjkfhsdkjlf KSLDJHFKJLSDHF dkjfhskjfh 12345678910";
+	
+
+	
+	mas=tolower(mas)
+
+	
 }

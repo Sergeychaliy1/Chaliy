@@ -152,7 +152,7 @@ char* deleteTheLetter(char* text, char letter)
 }
 
 
-StrReverseDyn(const char* str)
+const*StrReverseDyn(const char* str)
 {
 	char* newstr = new char[strlen(str)];
 	for (int i = 0; i < strlen(str); i++)

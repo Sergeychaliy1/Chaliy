@@ -137,15 +137,15 @@ char* deleteTheLetter(char* text, char letter)
 	char* newstr = new char[b];
 	for (int i = 0; i < b; i++)
 	{
+		if ('A' <= newstr[i] && newstr[i] <= 'Z')
+		
+		{
+			newstr[i] = str[i] +shift;
+		}
+		else
+	        {
 		newstr[i] = str[i];
 	}
-	for (int i = 0; i < b; i++)
-	{
-		if ('A' <= newstr[i] && newstr[i] <= 'Z')
-		{
-			newstr[i] = newstr[i]+ shift;
-		}
-		
 	}
 	delete[] str ;
 	return newstr;

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 using namespace std;
+#define SIZE 5
 const int height = 25;
 const int width = 70;
 void Draw() {
@@ -77,7 +78,7 @@ int main()
 	bool menu = true;
 	setlocale(LC_ALL, "Rus");
 	int cursore = 0;
-	string array[10];
+	string array[2*SIZE];
 	array[0] = "Пункт 1";
 	array[1] = "Пункт 2";
 	array[2] = "Пункт 3";

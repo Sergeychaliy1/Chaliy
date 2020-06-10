@@ -26,8 +26,8 @@ void Draw() {
 }
 enum Button
 {
-	ARROW_DOWN = 72,
-	ARROW_UP = 80,
+	ARROW_DOWN = 80,
+	ARROW_UP = 72,
 	ENTER = 13
 };
 
@@ -36,30 +36,30 @@ int Key(int cursore, bool& menu)
 	switch (_getch())
 	{
 	case ARROW_DOWN:
-		if (cursore <4)
+		if (cursore < SIZE-1)
 			return cursore + 1;
 		else
 			return cursore;//не изменит положение
 		break;
 	case ARROW_UP:
-		if (cursore > 0 && cursore < 5)
+		if (cursore > 0 && cursore < SIZE)
 			return cursore - 1;
 		else
 			return cursore;//чтобы не шло выше
 		break;
 	case ENTER:
-		if (cursore < 5)
+		if (cursore < SIZE)
 		{
-			if (cursore == 4)
+			if (cursore == SIZE-1)
 			{
 				menu = false;
 				return 0;
 			}
 			else
-				return  cursore + 5;
+				return  cursore + SIZE;
 		}
 		else 
-			return cursore -5 ;
+			return cursore - SIZE ;
 		break;
 	default:
 		return cursore;
@@ -97,11 +97,11 @@ int main()
 		SetConsoleTextAttribute(hCon, (WORD)((0 << 4) | 12));
 		Draw();
 		SetConsoleTextAttribute(hCon, (WORD)((0 << 4) | 15));
-	if (cursore < 5)
+	if (cursore < SIZE)
 	{
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < SIZE; i++)
 		{
-			cPos.Y = 8 + i;
+			cPos.Y = 3 + i;
 			SetConsoleCursorPosition(hCon, cPos);//устанавливает курсор на поставленные координаты
 			if (i == cursore)//курсор==стротке
 			{
@@ -120,7 +120,7 @@ int main()
 			cout << array[cursore];//курсор указывает на пункт
 			cPos.Y = 12;
 			SetConsoleCursorPosition(hCon, cPos);
-			cout << array[9];
+			cout << array[2*SIZE-1];
 		}
 		cursore = Key(cursore, menu);
 	}

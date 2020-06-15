@@ -59,7 +59,7 @@ void exitIfEscape()
 		exit(0);
 }
 
-void add(Punkt_menu*& punkt, const string point, void fun(void))
+void add(Punkt_menu& punkt, const string point, void fun(void))
 {
 	punkt.name = point;
 	punkt.fun = fun;

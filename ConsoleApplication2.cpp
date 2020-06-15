@@ -59,12 +59,6 @@ void exitIfEscape()
 		exit(0);
 }
 
-void add(paragraph& punkt, const string point, void fun(void))
-{
-	punkt.name = point;
-	punkt.fun = fun;
-}
-
 int main()
 {
 	HANDLE hCon;
@@ -74,13 +68,12 @@ int main()
 	cPos.X = 37;
 	setlocale(LC_ALL, "Rus");
 	int cursore = 0;
-	paragraph* array =new paragraph[SIZE];
-	add(array[0], "paint", OpenPaint);
-	add(array[1], "calculator", OpenCalc);
-	add(array[2], "provodnik", OpenExplorer);
-        add(array[3], "exit", exitIfEscape);
-	while (1)
-	{
+	paragraph array[SIZE] = {
+{ "paint", OpenPaint },
+{ "calculator", OpenCalc },
+{ "provodnik", OpenExplorer },
+{ "exit", exitIfEscape}
+	};
 		system("cls");
 
 	

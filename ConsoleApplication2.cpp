@@ -6,6 +6,7 @@
 #include <shellapi.h>
 
 using namespace std;
+#define SIZE 4
 enum Button
 {
 	ARROW_DOWN = 80,
@@ -58,16 +59,10 @@ void exitIfEscape()
 		exit(0);
 }
 
-void add(Punkt_menu*& arr, int & size, const string point, void fun(void))
+void add(Punkt_menu*& punkt, const string point, void fun(void))
 {
-	Punkt_menu* new_Array = new Punkt_menu[size + 1];
-	for (int i = 0; i < size; i++)
-		new_Array[i] = arr[i];
-	new_Array[size].name = point;
-	new_Array[size].fun = fun;
-	delete[] arr;
-	arr = new_Array;
-	size++;
+	punkt.name = point;
+	punkt.fun = fun;
 }
 
 int main()
@@ -79,12 +74,11 @@ int main()
 	cPos.X = 37;
 	setlocale(LC_ALL, "Rus");
 	int cursore = 0;
-	int SIZE = 0;
-	Punkt_menu* array = new Employee[SIZE];
-	add(array, SIZE, "paint", OpenPaint);
-	add(array, SIZE, "calculator", OpenCalc);
-	add(array, SIZE, "provodnik", OpenExplorer);
-        add(array, SIZE, "exit", exitIfEscape);
+	Punkt_menu* array =new Punkt_menu[SIZE];
+	add(array[0], "paint", OpenPaint);
+	add(array[1], "calculator", OpenCalc);
+	add(array[2], "provodnik", OpenExplorer);
+        add(array[3], "exit", exitIfEscape);
 	while (1)
 	{
 		system("cls");
@@ -103,6 +97,7 @@ int main()
 			else
 				cout << array[i].name;
 		}	
-		cursore = Key(cursore, menu,SIZE, array);
+		cursore = Key(cursore, array);
 	}
+	delete[] array;
 }

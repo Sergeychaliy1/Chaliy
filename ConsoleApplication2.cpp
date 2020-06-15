@@ -92,5 +92,4 @@ int main()
 		}	
 		cursore = Key(cursore, array);
 	}
-	delete[] array;
 }

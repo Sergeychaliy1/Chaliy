@@ -12,7 +12,7 @@ enum Button
 	ARROW_UP = 72,
 	ENTER = 13
 };
-struct Employee
+struct Punkt_menu
 {
 	string name;
 	void (*fun)();
@@ -58,9 +58,9 @@ void exitIfEscape()
 		exit(0);
 }
 
-void add(Employee*& arr, int & size, const string point, void fun(void))
+void add(Punkt_menu*& arr, int & size, const string point, void fun(void))
 {
-	Employee* new_Array = new Employee[size + 1];
+	Punkt_menu* new_Array = new Punkt_menu[size + 1];
 	for (int i = 0; i < size; i++)
 		new_Array[i] = arr[i];
 	new_Array[size].name = point;
@@ -80,7 +80,7 @@ int main()
 	setlocale(LC_ALL, "Rus");
 	int cursore = 0;
 	int SIZE = 0;
-	Employee* array = new Employee[SIZE];
+	Punkt_menu* array = new Employee[SIZE];
 	add(array, SIZE, "paint", OpenPaint);
 	add(array, SIZE, "calculator", OpenCalc);
 	add(array, SIZE, "provodnik", OpenExplorer);

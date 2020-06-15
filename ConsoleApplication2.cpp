@@ -13,7 +13,7 @@ enum Button
 	ARROW_UP = 72,
 	ENTER = 13
 };
-struct Punkt_menu
+struct paragraph
 {
 	string name;
 	void (*fun)();
@@ -30,7 +30,7 @@ void OpenExplorer()
 {
 	ShellExecute(NULL, L"open", L"C://windows//explorer.exe", NULL, NULL, SW_SHOW);
 }
-int Key(int cursore, int SIZE, Employee* array)
+int Key(int cursore,paragraph* array)
 {
 	switch (_getch())
 	{
@@ -59,7 +59,7 @@ void exitIfEscape()
 		exit(0);
 }
 
-void add(Punkt_menu& punkt, const string point, void fun(void))
+void add(paragraph& punkt, const string point, void fun(void))
 {
 	punkt.name = point;
 	punkt.fun = fun;
@@ -74,7 +74,7 @@ int main()
 	cPos.X = 37;
 	setlocale(LC_ALL, "Rus");
 	int cursore = 0;
-	Punkt_menu* array =new Punkt_menu[SIZE];
+	paragraph* array =new paragraph[SIZE];
 	add(array[0], "paint", OpenPaint);
 	add(array[1], "calculator", OpenCalc);
 	add(array[2], "provodnik", OpenExplorer);
